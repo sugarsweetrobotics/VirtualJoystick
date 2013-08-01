@@ -33,7 +33,7 @@ public class VirtualJoystick implements RtcNewFunc, RtcDeleteFunc, RegisterModul
     	    "language",          "Java",
     	    "lang_type",         "compile",
             // Configuration variables
-            "conf.default.gain", "1.0",
+            "conf.default.gain", "1000",
             // Widget
             "conf.__widget__.gain", "text",
             // Constraints

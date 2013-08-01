@@ -28,34 +28,38 @@ public class JoyFrame extends JFrame {
 	public class JoyPanel extends JPanel {
 
 		public JoyPanel() {
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setLayout(new GridLayout(3, 3));
 
 			this.add(new JLabel("Up:(0,1)"));
 			this.add(new JButton(new AbstractAction("Up") {
 				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("[RTC::VirtualJoystick] - Push Up");
 					state = UP;
 				}
 			}));
 			this.add(new JLabel("Right:(1,0)"));
 			this.add(new JButton(new AbstractAction("Left") {
 				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("[RTC::VirtualJoystick] - Push Left");
 					state = LEFT;
 				}
 			}));
 			this.add(new JButton(new AbstractAction("Default") {
 				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("[RTC::VirtualJoystick] - Push Default");
 					state = DEF;
 				}
 			}));
 			this.add(new JButton(new AbstractAction("Right") {
 				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("[RTC::VirtualJoystick] - Push Right");
 					state = RIGHT;
 				}
 			}));
 			this.add(new JLabel("Left:(-1,0)"));
 			this.add(new JButton(new AbstractAction("Down") {
 				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("[RTC::VirtualJoystick] - Push Down");
 					state = DOWN;
 				}
 			}));
@@ -65,14 +69,15 @@ public class JoyFrame extends JFrame {
 	}
 
 	public JoyFrame() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initPresentation();
 		setLocation(740, 0);
 		setSize(300, 300);
+		//frame.pack();
 		setVisible(true);
 	}
 
 	public void initPresentation() {
-
 		setContentPane(new JoyPanel());
 	}
 

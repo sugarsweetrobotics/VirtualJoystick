@@ -7,13 +7,15 @@
  * $Id$
  */
 
+import javax.swing.SwingUtilities;
+
 import jp.go.aist.rtm.RTC.DataFlowComponentBase;
 import jp.go.aist.rtm.RTC.Manager;
 import jp.go.aist.rtm.RTC.port.OutPort;
 import jp.go.aist.rtm.RTC.util.DataRef;
-import jp.go.aist.rtm.RTC.util.FloatHolder;
+import jp.go.aist.rtm.RTC.util.LongHolder;
 import RTC.ReturnCode_t;
-import RTC.TimedDoubleSeq;
+import RTC.TimedLongSeq;
 
 /*!
  * @class VirtualJoystickImpl
@@ -30,9 +32,9 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
 	public VirtualJoystickImpl(Manager manager) {  
         super(manager);
         // <rtc-template block="initializer">
-        m_out_val = new TimedDoubleSeq(new RTC.Time(0,0), null);
-        m_out = new DataRef<TimedDoubleSeq>(m_out_val);
-        m_outOut = new OutPort<TimedDoubleSeq>("out", m_out);
+        m_out_val = new TimedLongSeq(new RTC.Time(0,0), null);
+        m_out = new DataRef<TimedLongSeq>(m_out_val);
+        m_outOut = new OutPort<TimedLongSeq>("out", m_out);
         // </rtc-template>
 
     }
@@ -54,11 +56,26 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
         // Set OutPort buffer
         addOutPort("out", m_outOut);
         // </rtc-template>
-        bindParameter("gain", m_gain, "1.0");
+        bindParameter("gain", m_gain, "1000");
         
-        frame = new JoyFrame();
+        initUI();
         return super.onInitialize();
     }
+    
+    
+    protected void initUI() {
+    	//SwingUtilities.invokeLater(new Runnable() {
+         //   public void run() {
+	//System.out.println("[RTC.VirtualJoystick] - onInitialize (Ver. 1.0.0)");
+	frame = new JoyFrame();
+	//frame.setLocation(740, 0);
+	//frame.setSize(300, 300);
+	//frame.pack();
+	//frame.setVisible(true);
+	//   }
+        //});
+    }
+    
 
     /***
      *
@@ -119,6 +136,7 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
      */
     @Override
     protected ReturnCode_t onActivated(int ec_id) {
+    	//initUI();
     	frame.setState(JoyFrame.DEF);
         return super.onActivated(ec_id);
     }
@@ -152,25 +170,24 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
      */
     @Override
     protected ReturnCode_t onExecute(int ec_id) {
-    	
     	int state = frame.getState();
-    	m_out.v.data = new double[2];
+    	m_out.v.data = new int[2];
     	switch(state) {
     	case JoyFrame.UP:
     		m_out.v.data[0] = 0;
-    		m_out.v.data[1] = m_gain.value;
+    		m_out.v.data[1] = m_gain.value.intValue();
     		break;
     	case JoyFrame.RIGHT:
-    		m_out.v.data[0] = m_gain.value;
+	    m_out.v.data[0] = m_gain.value.intValue();
     		m_out.v.data[1] = 0;
     		break;
     	case JoyFrame.LEFT:
-       		m_out.v.data[0] = -m_gain.value;
+	    m_out.v.data[0] = -m_gain.value.intValue();
     		m_out.v.data[1] = 0;
     		break;
     	case JoyFrame.DOWN:
        		m_out.v.data[0] = 0;
-    		m_out.v.data[1] = -m_gain.value;
+    		m_out.v.data[1] = -m_gain.value.intValue();
     		break;
     	case JoyFrame.DEF:
        		m_out.v.data[0] = 0;
@@ -181,7 +198,6 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
     		
     	}
     	m_outOut.write();
-    	
         return super.onExecute(ec_id);
     }
 
@@ -270,9 +286,9 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
     /*!
      * 
      * - Name:  gain
-     * - DefaultValue: 1.0
+     * - DefaultValue: 1000
      */
-    protected FloatHolder m_gain = new FloatHolder();
+    protected LongHolder m_gain = new LongHolder();
 	// </rtc-template>
 
     // DataInPort declaration
@@ -282,11 +298,11 @@ public class VirtualJoystickImpl extends DataFlowComponentBase {
 
     // DataOutPort declaration
     // <rtc-template block="outport_declare">
-    protected TimedDoubleSeq m_out_val;
-    protected DataRef<TimedDoubleSeq> m_out;
+    protected TimedLongSeq m_out_val;
+    protected DataRef<TimedLongSeq> m_out;
     /*!
      */
-    protected OutPort<TimedDoubleSeq> m_outOut;
+    protected OutPort<TimedLongSeq> m_outOut;
 
     
     // </rtc-template>

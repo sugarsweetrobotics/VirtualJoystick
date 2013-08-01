@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/OpenRTM-aist/1.1/jar/OpenRTM-aist-1.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/OpenRTM-aist/1.1/jar/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ysuga/rtm/jar/OpenRTM-aist-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ysuga/rtm/jar/commons-cli-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

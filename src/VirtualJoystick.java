@@ -27,7 +27,7 @@ public class VirtualJoystick implements RtcNewFunc, RtcDeleteFunc, RegisterModul
     	    "description",       "Virtual Joystick",
     	    "version",           "1.0.0",
     	    "vendor",            "ysuga_net",
-    	    "category",          "Exampl",
+    	    "category",          "Demonstration",
     	    "activity_type",     "STATIC",
     	    "max_instance",      "1",
     	    "language",          "Java",

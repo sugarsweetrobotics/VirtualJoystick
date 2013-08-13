@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:ysuga_net:Exampl:VirtualJoystick:1.0.0" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="VirtualJoystick" rtc:updateDate="2012-06-28T17:14:13.814+09:00" rtc:creationDate="2012-06-28T17:14:13.814+09:00" rtc:version="1.0.0" rtc:vendor="ysuga_net" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Virtual Joystick" rtc:category="Exampl" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="VirtualJoystick">
+<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:ysuga_net:Demonstration:VirtualJoystick:1.0.0" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="VirtualJoystick" rtc:updateDate="2012-06-28T17:14:13.814+09:00" rtc:creationDate="2012-06-28T17:14:13.814+09:00" rtc:version="1.0.0" rtc:vendor="ysuga_net" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Virtual Joystick" rtc:category="Demonstration" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="VirtualJoystick">
         <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
     </rtc:BasicInfo>
     <rtc:Actions>
